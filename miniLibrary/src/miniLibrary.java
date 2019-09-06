@@ -10,23 +10,42 @@ public class miniLibrary
 		static int bookTakeOutOrAdd; 
 		public static void main(String[] args)
 			{
-				
+				welcomePatrons();
+				takeOutBookOrAddBook();
 
 			}
 		private static void welcomePatrons()
 		{
-			System.out.println("Hello Patron! Would you like to 1) take out a book or 2) add a book" );
-			bookTakeOutOrAdd= intInput.nextInt();
-			if (bookTakeOutOrAdd==1)
-				{
-					takeOutBook();
-				}
-			else
-				{
-					addBooks();
-				}
+			System.out.println("Hello Patron! " );
+			
 		}
-		
+		private static void takeOutBookOrAddBook()
+			{
+				System.out.println("Would you like to 1) take out a book or 2) add a book");
+				bookTakeOutOrAdd= intInput.nextInt();
+				if (bookTakeOutOrAdd==1)
+					{
+						takeOutBook();
+					}
+				else
+					{
+						addBooks();
+					}
+			}
+		private static void wantToContinue()
+			{
+				System.out.println("Would you like to continue 1) Yes or 2) No?");
+				int continueWork = intInput.nextInt();
+				if (continueWork == 1)
+					{
+						takeOutBookOrAddBook();
+					}
+				else
+					{
+						System.out.println("GoodBye");
+					}
+				
+			}
 		private static void takeOutBook()
 			{
 				// TODO Auto-generated method stub
@@ -34,7 +53,7 @@ public class miniLibrary
 			}
 		private static void addBooks()
 			{
-				System.out.println("How many books do you want buy?");
+				System.out.println("How many books do you want put in the library?");
 				int addBook = intInput.nextInt();
 				for(int i = 0; i <= addBook; i++)
 					{
@@ -49,6 +68,7 @@ public class miniLibrary
 						books.add(new Library(newTitle, newAuthor, addNumberOfPages,newCategory));
 					}
 				
+				wantToContinue(); 
 			}
 
 		
