@@ -10,6 +10,7 @@ public class miniLibrary
 		static int bookTakeOutOrAdd; 
 		public static void main(String[] args)
 			{
+				startOffLibrary();
 				welcomePatrons();
 				takeOutBookOrAddBook();
 
@@ -19,13 +20,24 @@ public class miniLibrary
 			System.out.println("Hello Patron! " );
 			
 		}
+		private static void startOffLibrary()
+		{
+			books.add(new Library("Rival Rails","Walter R. Borneman", 406, "nonfiction"));
+			books.add(new Library("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "nonfiction"));
+			books.add(new Library("The Paris Vendetta","Steve Berry", 419, "adventure"));
+			books.add(new Library("The Naturals","Jennifer Lynn Barnes", 311, "mystery"));
+			books.add(new Library("The Other Boleyn Girl","Philippa Gregory", 664, "historical fiction"));
+			books.add(new Library("Frost Like Night","Sara Raasch", 490, "fantasy"));
+			books.add(new Library("Brisingr","Christopher Paolini", 764, "fantasy"));
+		}
 		private static void takeOutBookOrAddBook()
 			{
 				System.out.println("Would you like to 1) take out a book or 2) add a book");
 				bookTakeOutOrAdd= intInput.nextInt();
 				if (bookTakeOutOrAdd==1)
 					{
-						takeOutBook();
+					reviewBooks();
+						//takeOutBook();
 					}
 				else
 					{
@@ -46,6 +58,15 @@ public class miniLibrary
 					}
 				
 			}
+		private static void reviewBooks() 
+		{
+			System.out.println("Here are the books:");
+			for (int i = 0; i < books.size(); i++)
+			{
+				System.out.println(books);
+			}
+			
+		}
 		private static void takeOutBook()
 			{
 				// TODO Auto-generated method stub
