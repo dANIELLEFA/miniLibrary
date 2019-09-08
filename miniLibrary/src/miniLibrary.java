@@ -80,7 +80,7 @@ public class miniLibrary
 					}
 				else 
 					{
-						System.out.println("GoodBye");
+						System.out.println("Goodbye");
 						shopping = false;
 					}
 				
