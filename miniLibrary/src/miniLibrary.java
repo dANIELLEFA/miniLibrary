@@ -8,11 +8,21 @@ public class miniLibrary
 		static Scanner stringInput = new Scanner (System.in);
 		static Scanner intInput = new Scanner (System.in);
 		static int bookTakeOutOrAdd; 
+		static boolean shopping;
+		static int bookNumber;
 		public static void main(String[] args)
 			{
-				startOffLibrary();
-				welcomePatrons();
+			startOffLibrary();
+			welcomePatrons();
+			reviewBooks();
+			wantToContinue();
+			while (shopping){
+				
+//				System.out.println("Just to review the books avaliable.");
+//				reviewBooks();
 				takeOutBookOrAddBook();
+				// stayAtLibrary();
+			}
 
 			}
 		private static void welcomePatrons()
@@ -32,18 +42,34 @@ public class miniLibrary
 		}
 		private static void takeOutBookOrAddBook()
 			{
+			reviewBooks();
 				System.out.println("Would you like to 1) take out a book or 2) add a book");
 				bookTakeOutOrAdd= intInput.nextInt();
 				if (bookTakeOutOrAdd==1)
 					{
-					reviewBooks();
-						//takeOutBook();
+					
+						takeOutBook();
 					}
 				else
 					{
 						addBooks();
+						
 					}
 			}
+//		private static void stayAtLibrary()
+//		{
+//			System.out.println("Do you want to stay at the library?");
+//			String continueShopping = stringInput.nextLine();
+//			if(continueShopping == "yes" || continueShopping =="Yes")
+//			{
+//				System.out.println("Continue on");
+//			}
+//			else 
+//			{
+//				System.out.println("GoodBye!");
+//				
+//			}
+//		}
 		private static void wantToContinue()
 			{
 				System.out.println("Would you like to continue 1) Yes or 2) No?");
@@ -52,31 +78,38 @@ public class miniLibrary
 					{
 						takeOutBookOrAddBook();
 					}
-				else
+				else 
 					{
 						System.out.println("GoodBye");
+						shopping = false;
 					}
 				
 			}
 		private static void reviewBooks() 
 		{
-			System.out.println("Here are the books:");
+			bookNumber = 1;
+			System.out.println("Here is a list of books:");
 			for (int i = 0; i < books.size(); i++)
 			{
-				System.out.println(books);
+				
+				System.out.println(bookNumber + ") "+books.get(i).getTitle() + " by " + books.get(i).getAuthor() + ".");
+				bookNumber++;
+				
 			}
 			
 		}
 		private static void takeOutBook()
 			{
-				// TODO Auto-generated method stub
-				
+				System.out.println("What book would you like to take out?");
+				int bookTaken= intInput.nextInt();
+				books.remove(bookTaken -1);
+				wantToContinue(); 
 			}
 		private static void addBooks()
 			{
 				System.out.println("How many books do you want put in the library?");
 				int addBook = intInput.nextInt();
-				for(int i = 0; i <= addBook; i++)
+				for(int i = 0; i < addBook; i++)
 					{
 						System.out.println("List the title: ");
 						String newTitle = stringInput.nextLine();
