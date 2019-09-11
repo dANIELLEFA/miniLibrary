@@ -1,11 +1,11 @@
 
-public class Library
+public class Book
 	{
 		String title;
 		String author;
 		int numberOfPages;
 		String category;
-		public Library(String t, String a, int nOP, String c)
+		public Book(String t, String a, int nOP, String c)
 		{
 			title = t;
 			author = a;

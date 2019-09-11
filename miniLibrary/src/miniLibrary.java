@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class miniLibrary
 	{
-		static	ArrayList<Library> books = new ArrayList <Library>();
+		static	ArrayList<Book> library = new ArrayList <Book>();
 		static Scanner stringInput = new Scanner (System.in);
 		static Scanner intInput = new Scanner (System.in);
 		static int bookTakeOutOrAdd; 
@@ -18,8 +18,8 @@ public class miniLibrary
 			wantToContinue();
 			while (shopping){
 				
-//				System.out.println("Just to review the books avaliable.");
-//				reviewBooks();
+				System.out.println("Just to review the books avaliable.");
+				reviewBooks();
 				takeOutBookOrAddBook();
 				// stayAtLibrary();
 			}
@@ -32,13 +32,13 @@ public class miniLibrary
 		}
 		private static void startOffLibrary()
 		{
-			books.add(new Library("Rival Rails","Walter R. Borneman", 406, "nonfiction"));
-			books.add(new Library("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "nonfiction"));
-			books.add(new Library("The Paris Vendetta","Steve Berry", 419, "adventure"));
-			books.add(new Library("The Naturals","Jennifer Lynn Barnes", 311, "mystery"));
-			books.add(new Library("The Other Boleyn Girl","Philippa Gregory", 664, "historical fiction"));
-			books.add(new Library("Frost Like Night","Sara Raasch", 490, "fantasy"));
-			books.add(new Library("Brisingr","Christopher Paolini", 764, "fantasy"));
+			library.add(new Book("Rival Rails","Walter R. Borneman", 406, "nonfiction"));
+			library.add(new Book("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "nonfiction"));
+			library.add(new Book("The Paris Vendetta","Steve Berry", 419, "adventure"));
+			library.add(new Book("The Naturals","Jennifer Lynn Barnes", 311, "mystery"));
+			library.add(new Book("The Other Boleyn Girl","Philippa Gregory", 664, "historical fiction"));
+			library.add(new Book("Frost Like Night","Sara Raasch", 490, "fantasy"));
+			library.add(new Book("Brisingr","Christopher Paolini", 764, "fantasy"));
 		}
 		private static void takeOutBookOrAddBook()
 			{
@@ -50,26 +50,17 @@ public class miniLibrary
 					
 						takeOutBook();
 					}
-				else
+				else if(bookTakeOutOrAdd==2)
 					{
 						addBooks();
 						
 					}
+				else
+					{
+						takeOutBookOrAddBook();
+					}
 			}
-//		private static void stayAtLibrary()
-//		{
-//			System.out.println("Do you want to stay at the library?");
-//			String continueShopping = stringInput.nextLine();
-//			if(continueShopping == "yes" || continueShopping =="Yes")
-//			{
-//				System.out.println("Continue on");
-//			}
-//			else 
-//			{
-//				System.out.println("GoodBye!");
-//				
-//			}
-//		}
+//		
 		private static void wantToContinue()
 			{
 				System.out.println("Would you like to continue 1) Yes or 2) No?");
@@ -78,21 +69,26 @@ public class miniLibrary
 					{
 						takeOutBookOrAddBook();
 					}
-				else 
+				 else if(continueWork == 2)
 					{
 						System.out.println("Goodbye");
 						shopping = false;
 					}
+				 else
+					 {
+						 System.out.println("Pick one of the two.");
+						 wantToContinue();
+					 }
 				
 			}
 		private static void reviewBooks() 
 		{
 			bookNumber = 1;
-			System.out.println("Here is a list of books:");
-			for (int i = 0; i < books.size(); i++)
+			System.out.println("Here is the list of books:");
+			for (int i = 0; i < library.size(); i++)
 			{
 				
-				System.out.println(bookNumber + ") "+books.get(i).getTitle() + " by " + books.get(i).getAuthor() + ".");
+				System.out.println(bookNumber + ") "+library.get(i).getTitle() + " by " + library.get(i).getAuthor() + ".");
 				bookNumber++;
 				
 			}
@@ -102,7 +98,7 @@ public class miniLibrary
 			{
 				System.out.println("What book would you like to take out?");
 				int bookTaken= intInput.nextInt();
-				books.remove(bookTaken -1);
+				library.remove(bookTaken -1);
 				wantToContinue(); 
 			}
 		private static void addBooks()
@@ -119,7 +115,7 @@ public class miniLibrary
 						int addNumberOfPages = intInput.nextInt();
 						System.out.println("List the category: ");
 						String newCategory = stringInput.nextLine();
-						books.add(new Library(newTitle, newAuthor, addNumberOfPages,newCategory));
+						library.add(new Book(newTitle, newAuthor, addNumberOfPages,newCategory));
 					}
 				
 				wantToContinue(); 
