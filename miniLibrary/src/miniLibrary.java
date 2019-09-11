@@ -32,13 +32,13 @@ public class miniLibrary
 		}
 		private static void startOffLibrary()
 		{
-			library.add(new Book("Rival Rails","Walter R. Borneman", 406, "nonfiction"));
-			library.add(new Book("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "nonfiction"));
-			library.add(new Book("The Paris Vendetta","Steve Berry", 419, "adventure"));
-			library.add(new Book("The Naturals","Jennifer Lynn Barnes", 311, "mystery"));
-			library.add(new Book("The Other Boleyn Girl","Philippa Gregory", 664, "historical fiction"));
-			library.add(new Book("Frost Like Night","Sara Raasch", 490, "fantasy"));
-			library.add(new Book("Brisingr","Christopher Paolini", 764, "fantasy"));
+			library.add(new Book("Rival Rails","Walter R. Borneman", 406, "nonfiction", 1.00));
+			library.add(new Book("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "nonfiction", 1.00));
+			library.add(new Book("The Paris Vendetta","Steve Berry", 419, "adventure", 1.00));
+			library.add(new Book("The Naturals","Jennifer Lynn Barnes", 311, "mystery", 1.00));
+			library.add(new Book("The Other Boleyn Girl","Philippa Gregory", 664, "historical fiction", 1.00));
+			library.add(new Book("Frost Like Night","Sara Raasch", 490, "fantasy", 1.00));
+			library.add(new Book("Brisingr","Christopher Paolini", 764, "fantasy", 1.00));
 		}
 		private static void takeOutBookOrAddBook()
 			{

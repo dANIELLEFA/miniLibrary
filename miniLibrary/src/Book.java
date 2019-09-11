@@ -5,12 +5,14 @@ public class Book
 		String author;
 		int numberOfPages;
 		String category;
-		public Book(String t, String a, int nOP, String c)
+		double price;
+		public Book(String t, String a, int nOP, String c, double p)
 		{
 			title = t;
 			author = a;
 			numberOfPages = nOP;
 			category = c;
+			price = p;
 		}
 		public String getTitle()
 			{
@@ -43,6 +45,15 @@ public class Book
 		public void setCategory(String Category)
 			{
 				this.category = category;
+			}
+		public double getPrice()
+			{
+				return price;
+			}
+		
+		public void setprice(double price)
+			{
+				this.price = price;
 			}
 
 	}
