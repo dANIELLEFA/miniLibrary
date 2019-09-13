@@ -51,7 +51,7 @@ public class Book
 				return price;
 			}
 		
-		public void setprice(double price)
+		public void setPrice(double price)
 			{
 				this.price = price;
 			}

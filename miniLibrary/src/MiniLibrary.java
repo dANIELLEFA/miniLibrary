@@ -2,20 +2,22 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class miniLibrary
+public class MiniLibrary
 	{
 		static	ArrayList<Book> library = new ArrayList <Book>();
 		static Scanner stringInput = new Scanner (System.in);
 		static Scanner intInput = new Scanner (System.in);
+		static Scanner doubleInput = new Scanner (System.in);
 		static int bookTakeOutOrAdd; 
 		static boolean shopping;
 		static int bookNumber;
-		static int price;
+		static double moneyWantToSpend;
+		
 		public static void main(String[] args)
 			{
-				
+				System.out.println(SetPrice.price);
 				startOffLibrary();
-				setPrice();
+				
 			welcomePatrons();
 			
 			reviewBooks();
@@ -31,7 +33,8 @@ public class miniLibrary
 			}
 		private static void welcomePatrons()
 		{
-			System.out.println("Hello Patron! " );
+			System.out.println("Hello Patron! How much money do you want to spend?" );
+			moneyWantToSpend =doubleInput.nextDouble();
 			
 		}
 		private static void startOffLibrary()
@@ -39,14 +42,14 @@ public class miniLibrary
 			boolean needPrice = true;
 			
 			
-			library.add(new Book("Rival Rails","Walter R. Borneman", 406, "Nonfiction", 100));
-			library.add(new Book("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "Nonfiction", price));
-			library.add(new Book("The Paris Vendetta","Steve Berry", 419, "Adventure", price));
-			library.add(new Book("The Naturals","Jennifer Lynn Barnes", 311, "Mystery", 1.00));
-			library.add(new Book("The Other Boleyn Girl","Philippa Gregory", 664, "Historical fiction", price));
-			library.add(new Book("Frost Like Night","Sara Raasch", 490, "Fantasy", 1.00));
-			library.add(new Book("Brisingr","Christopher Paolini", 764, "Fantasy", 1.00));
-			setPrice();
+			library.add(new Book("Rival Rails","Walter R. Borneman", 406, "Nonfiction", SetPrice.price));
+			library.add(new Book("Taylors Guide to Shade Gardening","Houghton Mifflin Company", 501, "Nonfiction", SetPrice.price));
+			library.add(new Book("The Paris Vendetta","Steve Berry", 419, "Adventure", SetPrice.price));
+			library.add(new Book("The Naturals","Jennifer Lynn Barnes", 311, "Mystery", SetPrice.price));
+			library.add(new Book("The Other Boleyn Girl","Philippa Gregory", 664, "Historical fiction", SetPrice.price));
+			library.add(new Book("Frost Like Night","Sara Raasch", 490, "Fantasy", SetPrice.price));
+			library.add(new Book("Brisingr","Christopher Paolini", 764, "Fantasy", SetPrice.price));
+			SetPrice.makePrice();
 		}
 		private static void takeOutBookOrAddBook()
 			{
@@ -71,11 +74,12 @@ public class miniLibrary
 //		
 		private static void wantToContinue()
 			{
-				System.out.println("Would you like to continue 1) Yes or 2) No?");
+				System.out.println("Would you like to continue 1) Yes or 2) No? You have $" + moneyWantToSpend + "0 left to spend.");
 				int continueWork = intInput.nextInt();
 				if (continueWork == 1)
 					{
 						takeOutBookOrAddBook();
+					
 					}
 				 else if(continueWork == 2)
 					{
@@ -96,7 +100,7 @@ public class miniLibrary
 			for (int i = 0; i < library.size(); i++)
 			{
 				
-				System.out.println(bookNumber + ") "+library.get(i).getTitle() + " by " + library.get(i).getAuthor() + " for "+library.get(i).getPrice()+".");
+				System.out.println(bookNumber + ") "+library.get(i).getTitle() + " by " + library.get(i).getAuthor() + " for $"+library.get(i).getPrice()+"0.");
 				bookNumber++;
 				
 			}
@@ -106,7 +110,9 @@ public class miniLibrary
 			{
 				System.out.println("What book would you like to take out?");
 				int bookTaken= intInput.nextInt();
+				moneyWantToSpend =moneyWantToSpend -library.get(bookTaken-1).getPrice();
 				library.remove(bookTaken -1);
+				
 				wantToContinue(); 
 			}
 		private static void addBooks()
@@ -123,53 +129,13 @@ public class miniLibrary
 						int addNumberOfPages = intInput.nextInt();
 						System.out.println("List the category: ");
 						String newCategory = stringInput.nextLine();
-						setPrice();
-						library.add(new Book(newTitle, newAuthor, addNumberOfPages,newCategory,price));
+						SetPrice.makePrice();
+						library.add(new Book(newTitle, newAuthor, addNumberOfPages,newCategory,SetPrice.price));
 					}
 				
 				wantToContinue(); 
 			}
-		private static void setPrice()
-			{
-				
-				for (int i = 1; i < library.size() ; i++)
-					{
-						 price = 1;
-						if(library.get(i).getCategory() == "Nonfiction")
-							{
-							price+= 1;
-							}
-						else if (library.get(i).getCategory() == "Fanasty")
-							{
-								price+=1;
-							}
-						else
-							{
-								price = price + 0;
-							}
-						int space = library.get(i).getAuthor().indexOf(" ");
-						switch(library.get(i).getAuthor().substring(space+2,  space + 3))
-						{
-							case "R":
-							case "S	":
-							case "K":
-							case "A":	
-								price++;
-								
-								break;
-							default:
-								price+=.50;
-							
-								break;
-								
-						}
-						if (library.get(i).getNumberOfPages() >= 200)
-							{
-								price++;
-							}
-						//library.get(i).getPrice()== price;
-					}
-			}
+		
 //test
 		
 
