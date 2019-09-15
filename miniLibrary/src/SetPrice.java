@@ -12,7 +12,7 @@ public static void makePrice()
 	for ( i = 0; i < MiniLibrary.library.size() ; i++)
 		{
 			
-			 price = 1.0;
+			 price = 3.0;
 			 getAuthorCondition();
 			 getNumOfPages();
 			 getGenre();
