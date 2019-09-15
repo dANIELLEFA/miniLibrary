@@ -76,7 +76,7 @@ public class MiniLibrary
 				{
 					System.out.println("Goodbye");
 					shopping = false;
-				}//
+				}
 				else if (continueWork == 1)
 					{
 						choose();
