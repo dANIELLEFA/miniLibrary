@@ -11,7 +11,14 @@ public static void movieSection()
 }
 public static void startOffMovies()
 {
-	
+	MiniLibrary.movieSection.add(new Movies("Hamilton","Lin-Manuel Miranda", 70, "Nonfiction", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("Forever","Jaco Smith", 102, "Romance", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("Charlotte's Web","Gary Winick", 98, "Children", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("The Swap","Jay Karas", 89, "Comedy", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("Into the Woods","James Lapine", 150, "Play", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("Good Will Hunting","Gus Van Sant", 126, "Drama", SetPrice.price));
+	MiniLibrary.movieSection.add(new Movies("A.X.L.","Oliver Daly", 99, "Adventure", SetPrice.price));
+	SetPrice.makePrice();
 }
 public static void reviewMovies() 
 {

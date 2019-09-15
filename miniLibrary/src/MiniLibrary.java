@@ -50,6 +50,11 @@ public class MiniLibrary
 				System.out.println("That is too much money. Go for a smaller amount.");
 				welcomePatrons();
 			}
+			
+			
+		}
+		private static void choose()
+		{
 			System.out.println("Do you want to go to the 1) movie section or to the 2) book section");
 			bookOrMovie = intInput.nextInt();
 			if (bookOrMovie == 1)
@@ -60,7 +65,6 @@ public class MiniLibrary
 			{
 				Library.bookLibrary();
 			}
-			
 		}
 	
 
@@ -68,9 +72,14 @@ public class MiniLibrary
 			{
 				System.out.println("Would you like to continue 1) Yes or 2) No? You have $" + moneyWantToSpend + "0 left to spend.");
 				int continueWork = intInput.nextInt();
-				if (continueWork == 1)
+				if(moneyWantToSpend <= 0)
+				{
+					System.out.println("Goodbye");
+					shopping = false;
+				}
+				else if (continueWork == 1)
 					{
-						Library.takeOutBookOrAddBook();
+						choose();
 					
 					}
 				 else if(continueWork == 2)
@@ -93,17 +102,18 @@ public class MiniLibrary
 			System.out.println("2.Biography/Autobiography");
 			System.out.println("3.Choice");
 			System.out.println("4.Classic");
-			System.out.println("5.Drama");
-			System.out.println("6.Fantasy");
-			System.out.println("7.Historical Fiction");
-			System.out.println("8.Horror");
-			System.out.println("9.Kids Book");
-			System.out.println("10.Mythology");
-			System.out.println("11.Nonfiction");
-			System.out.println("12.Play");
-			System.out.println("13.Poems");
-			System.out.println("14.Religious");
-			System.out.println("15.Romance");
+			System.out.println("5.Comedy");
+			System.out.println("6.Drama");
+			System.out.println("7.Fantasy");
+			System.out.println("8.Historical Fiction");
+			System.out.println("9.Horror");
+			System.out.println("10.Children ");
+			System.out.println("11.Mythology");
+			System.out.println("12.Nonfiction");
+			System.out.println("13.Play");
+			System.out.println("14.Poems");
+			System.out.println("15.Religious");
+			System.out.println("16.Romance");
 			
 			choiceOfCategory();
 			
@@ -130,45 +140,49 @@ public class MiniLibrary
 			}
 			else if (numberOfCategory == 5)
 			{
-				newCategory ="Drama";
+				newCategory ="Comedy";
 			}
 			else if (numberOfCategory == 6)
 			{
-				newCategory ="Fantasy";
+				newCategory ="Drama";
 			}
 			else if (numberOfCategory == 7)
 			{
-				newCategory ="Historical Fiction";
+				newCategory ="Fantasy";
 			}
 			else if (numberOfCategory == 8)
 			{
-				newCategory ="Horror";
+				newCategory ="Historical Fiction";
 			}
 			else if (numberOfCategory == 9)
 			{
-				newCategory ="Kids Book";
+				newCategory ="Horror";
 			}
 			else if (numberOfCategory == 10)
 			{
-				newCategory ="Mythology";
+				newCategory ="Kids Book";
 			}
 			else if (numberOfCategory == 11)
 			{
-				newCategory ="Nonfiction";
+				newCategory ="Mythology";
 			}
 			else if (numberOfCategory == 12)
 			{
-				newCategory ="Play";
+				newCategory ="Nonfiction";
 			}
 			else if (numberOfCategory == 13)
 			{
-				newCategory ="Poems";
+				newCategory ="Play";
 			}
 			else if (numberOfCategory == 14)
 			{
-				newCategory ="Religious";
+				newCategory ="Poems";
 			}
 			else if (numberOfCategory == 15)
+			{
+				newCategory ="Religious";
+			}
+			else if (numberOfCategory == 16)
 			{
 				newCategory ="Romance";
 			}
