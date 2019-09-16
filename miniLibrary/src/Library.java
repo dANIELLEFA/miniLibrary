@@ -53,8 +53,21 @@ public class Library
 				takeOutBookOrAddBook();
 			}
 	}
+	public static void takeRandomChoice()
+	{
+		System.out.println("Would you like a random choice 1) yes or 2)no?");
+		
+		int yesOrNo = MiniLibrary.intInput.nextInt();
+		if(yesOrNo == 1 )
+			{
+		int randomChoice = (int)(Math.random() * MiniLibrary.library.size());
+		System.out.println(MiniLibrary.library.get(randomChoice).getTitle() + MiniLibrary.library.get(randomChoice).getAuthor() + MiniLibrary.library.get(randomChoice).getPrice() );
+			}
+		
+	}
 	public static void takeOutBook()
 	{
+		takeRandomChoice();
 		System.out.println("What book would you like to take out?");
 		int bookTaken= MiniLibrary.intInput.nextInt();
 		MiniLibrary.moneyWantToSpend =MiniLibrary.moneyWantToSpend -MiniLibrary.library.get(bookTaken-1).getPrice();

@@ -23,7 +23,7 @@ public class MiniLibrary
 				
 				
 			welcomePatrons();
-			
+			choose();
 			
 			
 			while (shopping){
@@ -86,6 +86,7 @@ public class MiniLibrary
 					{
 						System.out.println("Goodbye");
 						shopping = false;
+						System.exit(0);
 					}
 				 else
 					 {
