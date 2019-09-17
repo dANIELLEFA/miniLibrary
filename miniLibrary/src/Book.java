@@ -1,18 +1,28 @@
 
 public class Book
 	{
+		int bookNumber;
 		String title;
 		String author;
 		int numberOfPages;
 		String category;
 		double price;
-		public Book(String t, String a, int nOP, String c, double p)
+		public Book(int bN,String t, String a, int nOP, String c, double p)
 		{
+			bookNumber = bN;
 			title = t;
 			author = a;
 			numberOfPages = nOP;
 			category = c;
 			price = p;
+		}
+		public int getBookNumber()
+		{
+			return bookNumber;
+		}
+		public void setBookNumber(int bookNumber)
+		{
+			this.bookNumber = bookNumber;
 		}
 		public String getTitle()
 			{

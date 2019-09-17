@@ -15,6 +15,8 @@ public class MiniLibrary
 		static int bookNumber;
 		static int movieNumber;
 		static double moneyWantToSpend;
+		static int numberOfTimesThereMovies;
+		static int numberOfTimesThereBooks;
 		static String newCategory;
 		
 		public static void main(String[] args)
@@ -75,7 +77,9 @@ public class MiniLibrary
 				if(moneyWantToSpend <= 0)
 				{
 					System.out.println("Goodbye");
+					
 					shopping = false;
+					System.exit(0);
 				}//
 				else if (continueWork == 1)
 					{

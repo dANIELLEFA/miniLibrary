@@ -5,7 +5,10 @@ public class MovieSection
 	static int movieTakeOut;
 public static void movieSection()
 {
+	if (MiniLibrary.numberOfTimesThereMovies == 0)
+		{
 	startOffMovies();
+		}
 	reviewMovies();
 	takeOutMovieOrAddMovie();
 }
@@ -22,6 +25,7 @@ public static void startOffMovies()
 }
 public static void reviewMovies() 
 {
+	MiniLibrary.numberOfTimesThereMovies++;
 	MiniLibrary.movieNumber = 1;
 	System.out.println("Here is the list of movies:");
 	for (int i = 0; i < MiniLibrary.movieSection.size(); i++)
@@ -51,8 +55,37 @@ public static void takeOutMovieOrAddMovie()
 			takeOutMovieOrAddMovie();
 		}
 }
+public static void takeRandomChoice()
+	{
+		System.out.println("Would you like a random choice 1) yes or 2) no?");
+		
+		int yesOrNo = MiniLibrary.intInput.nextInt();
+		if(yesOrNo == 1 )
+			{
+		int randomChoice = (int)(Math.random() * MiniLibrary.movieSection.size());
+		System.out.println("Your random choice movie is " +MiniLibrary.movieSection.get(randomChoice).getTitle() + " directed by " + MiniLibrary.movieSection.get(randomChoice).getDirector() + " for $" + MiniLibrary.movieSection.get(randomChoice).getPrice() + "0. Would you like this movie 1) Yes or 2) No?" );
+			int answer = MiniLibrary.intInput.nextInt();
+			if ( answer == 1)
+				{
+					MiniLibrary.moneyWantToSpend = MiniLibrary.moneyWantToSpend - MiniLibrary.movieSection.get(randomChoice).getPrice();
+					MiniLibrary.movieSection.remove(randomChoice);
+					MiniLibrary.wantToContinue();
+				}
+			else if (answer == 2)
+				{
+					takeRandomChoice();
+				}
+			
+			}
+		else
+			{
+				System.out.println("Ok.");
+			}
+		
+	}
 public static void takeOutMovie()
 {
+	takeRandomChoice();
 	System.out.println("What movie would you like to take out?");
 	int movieTaken= MiniLibrary.intInput.nextInt();
 	MiniLibrary.moneyWantToSpend =MiniLibrary.moneyWantToSpend -MiniLibrary.movieSection.get(movieTaken-1).getPrice();
