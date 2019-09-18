@@ -3,6 +3,7 @@ public class MovieSection
 {
 	static int movieTakeOutOrAdd;
 	static int movieTakeOut;
+	static int timesTriedToBuyOverPrice;
 public static void movieSection()
 {
 	if (MiniLibrary.numberOfTimesThereMovies == 0)
@@ -28,24 +29,44 @@ public static void reviewMovies()
 	MiniLibrary.numberOfTimesThereMovies++;
 	MiniLibrary.movieNumber = 1;
 	System.out.println("Here is the list of movies:");
+	System.out.println("These are the movies you can afford:");
 	for (int i = 0; i < MiniLibrary.movieSection.size(); i++)
 	{
-		
+		if(MiniLibrary.moneyWantToSpend >= MiniLibrary.movieSection.get(i).getPrice())
+			{
+				
 		System.out.println(MiniLibrary.movieNumber + ") "+MiniLibrary.movieSection.get(i).getTitle() + " by " + MiniLibrary.movieSection.get(i).getDirector() + " for $"+MiniLibrary.movieSection.get(i).getPrice()+"0.");
 		MiniLibrary.movieNumber++;
-		
+			}
 	}
 }
 public static void takeOutMovieOrAddMovie()
 {
+	
 	System.out.println("Would you like to 1) take out a movie or 2) add a movie");
 	movieTakeOutOrAdd= MiniLibrary.intInput.nextInt();
-	if (movieTakeOutOrAdd==1)
+	if (movieTakeOutOrAdd==1 && MiniLibrary.moneyWantToSpend < 7 )
 		{
 		
-			takeOutMovie();
+			System.out.println("You thought you could trick me. You were wrong.Do you want to 1) go to books or 2) add a movie?");
+			MiniLibrary.bookOrMovie = MiniLibrary.intInput.nextInt();
+			timesTriedToBuyOverPrice++;
+			if(MiniLibrary.bookOrMovie == 1)
+				{
+					Library.bookLibrary();
+				}
+			else if(MiniLibrary.bookOrMovie == 2)
+				{
+					addMovies();
+				}
 		}
-	else if(movieTakeOutOrAdd==2)
+			if (movieTakeOutOrAdd==1 )
+				{
+		
+			takeOutMovie();
+				}
+		
+	else if(movieTakeOutOrAdd==2 )
 		{
 			addMovies();
 			

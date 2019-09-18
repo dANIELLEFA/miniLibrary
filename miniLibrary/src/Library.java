@@ -37,11 +37,15 @@ public class Library
 		
 		MiniLibrary.bookNumber = 1;
 		System.out.println("Here is the list of books:");
+		System.out.println("These are a list of books you can afford:");
 		for (int i = 0; i < MiniLibrary.library.size(); i++)
 		{
+			if(MiniLibrary.moneyWantToSpend >= MiniLibrary.library.get(i).getPrice())
+				{
 			
 			System.out.println(MiniLibrary.bookNumber + ") "+MiniLibrary.library.get(i).getTitle() + " by " + MiniLibrary.library.get(i).getAuthor() + " for $"+MiniLibrary.library.get(i).getPrice()+"0.");
 		MiniLibrary.bookNumber++;
+				}
 			
 		}
 	}
@@ -51,6 +55,21 @@ public class Library
 		MiniLibrary.numberOfTimesThereBooks++;
 		System.out.println("Would you like to 1) take out a book or 2) add a book");
 		MiniLibrary.bookTakeOutOrAdd= MiniLibrary.intInput.nextInt();
+		if (MiniLibrary.bookTakeOutOrAdd==1 && MiniLibrary.moneyWantToSpend < 5 )
+			{
+			
+				System.out.println("You thought you could trick me. You were wrong.Do you want to 1) add books or 2) add a movie?");
+				MiniLibrary.bookOrMovie = MiniLibrary.intInput.nextInt();
+				MovieSection.timesTriedToBuyOverPrice++;
+				if(MiniLibrary.bookOrMovie == 1)
+					{
+						addBooks();
+					}
+				else if(MiniLibrary.bookOrMovie == 2)
+					{
+						MovieSection.addMovies();
+					}
+			}
 		if (MiniLibrary.bookTakeOutOrAdd==1)
 			{
 			

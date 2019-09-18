@@ -29,7 +29,12 @@ public class MiniLibrary
 			
 			
 			while (shopping){
-				
+				if(MovieSection.timesTriedToBuyOverPrice >= 10)
+					{
+						System.out.println("You are being ejected from this website. This is a passive agressive way to say goodbye.");
+						shopping = false;
+						System.exit(0);
+					}
 				if(bookOrMovie == 1)
 				{
 					MovieSection.movieSection();
@@ -57,16 +62,49 @@ public class MiniLibrary
 		}
 		private static void choose()
 		{
+			
 			System.out.println("Do you want to go to the 1) movie section or to the 2) book section");
 			bookOrMovie = intInput.nextInt();
-			if (bookOrMovie == 1)
+			if (bookOrMovie == 1 && moneyWantToSpend >= 7 )
 			{
+				
 				MovieSection.movieSection();
 			}
-			if (bookOrMovie == 2)
-			{
+			else if( bookOrMovie == 1 && moneyWantToSpend < 7)
+				{
+					System.out.println("You don't have enough money to buy a movie. Do you want to 1) add a movie or 2) go to the book section?");
+					bookOrMovie = intInput.nextInt();
+					if ( bookOrMovie == 1)
+						{
+							MovieSection.movieSection();
+						}
+					else if(bookOrMovie ==2)
+						{
+							Library.bookLibrary();
+						}
+					
+				}
+			else if (bookOrMovie == 2 && moneyWantToSpend >= 5.00)
+				{
 				Library.bookLibrary();
-			}
+				}
+			else if(bookOrMovie == 2 && moneyWantToSpend < 5.00 )
+				{
+					System.out.println("You don't have enough money to buy a book or a movie. Do you want to 1) add a movie or 2) add a book or 3) do you want to go?");
+					bookOrMovie = intInput.nextInt();
+					if ( bookOrMovie == 1)
+						{
+							MovieSection.movieSection();
+						}
+					else if(bookOrMovie ==2)
+						{
+							Library.bookLibrary();
+						}
+					else
+						{
+							wantToContinue();
+						}
+				}
 		}
 	
 
@@ -76,7 +114,8 @@ public class MiniLibrary
 				int continueWork = intInput.nextInt();
 				if(moneyWantToSpend <= 0)
 				{
-					System.out.println("Goodbye");
+					
+					System.out.println("You have no more money to purchase books or movies. You are being ejected from this site. Goodbye");
 					
 					shopping = false;
 					System.exit(0);
