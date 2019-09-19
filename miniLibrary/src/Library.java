@@ -6,9 +6,11 @@ public class Library
 		if(MiniLibrary.numberOfTimesThereBooks == 0)
 			{
 		startOffLibrary();
+		// inputs library first time
 			}
 		
 		takeOutBookOrAddBook();
+		// goes to method takeOutBookOrAddBook
 	}
 	public static void startOffLibrary()
 	{
@@ -30,6 +32,7 @@ public class Library
 		MiniLibrary.library.add(new Book(MiniLibrary.bookNumber,"Brisingr","Christopher Paolini", 764, "Fantasy", SetPrice.price));
 		
 		SetPrice.makePrice();
+		// goes to method makePrice in class SetPrice 
 		
 	}
 	public static void reviewBooks() 
@@ -42,22 +45,24 @@ public class Library
 		{
 			if(MiniLibrary.moneyWantToSpend >= MiniLibrary.library.get(i).getPrice())
 				{
-			
+			// list books you can afford
 			System.out.println(MiniLibrary.bookNumber + ") "+MiniLibrary.library.get(i).getTitle() + " by " + MiniLibrary.library.get(i).getAuthor() + " for $"+MiniLibrary.library.get(i).getPrice()+"0.");
 		MiniLibrary.bookNumber++;
 				}
+			
 			
 		}
 	}
 	public static void takeOutBookOrAddBook()
 	{
 		reviewBooks();
+		// goes to method reviewBooks
 		MiniLibrary.numberOfTimesThereBooks++;
 		System.out.println("Would you like to 1) take out a book or 2) add a book");
 		MiniLibrary.bookTakeOutOrAdd= MiniLibrary.intInput.nextInt();
 		if (MiniLibrary.bookTakeOutOrAdd==1 && MiniLibrary.moneyWantToSpend < 5 )
 			{
-			
+			//
 				System.out.println("You thought you could trick me. You were wrong.Do you want to 1) add books or 2) add a movie?");
 				MiniLibrary.bookOrMovie = MiniLibrary.intInput.nextInt();
 				MovieSection.timesTriedToBuyOverPrice++;
