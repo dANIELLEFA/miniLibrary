@@ -87,7 +87,7 @@ public class MiniLibrary
 					bookOrMovie = intInput.nextInt();
 					if ( bookOrMovie == 1)
 						{
-							MovieSection.movieSection();
+							MovieSection.addMovies();
 							// takes them to movie
 						}
 					else if(bookOrMovie ==2)
@@ -111,12 +111,12 @@ public class MiniLibrary
 					if ( bookOrMovie == 1)
 						{
 							
-							MovieSection.movieSection();
+							MovieSection.addMovies();
 							// takes them to the movie
 						}
 					else if(bookOrMovie ==2)
 						{
-							Library.bookLibrary();
+							Library.addBooks();
 							// takes them to library
 						}
 					else

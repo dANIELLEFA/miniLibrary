@@ -50,7 +50,7 @@ private static void getAuthorCondition()
 		case "K":
 		case "A":
 				{
-			price++;
+			price+= 1.5;
 			
 			break;
 				}
