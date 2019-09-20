@@ -93,7 +93,7 @@ public class Library
 	public static void takeRandomChoice()
 	{
 		System.out.println("Would you like a random choice 1) yes or 2) no?");
-		
+		// random generator
 		int yesOrNo = MiniLibrary.intInput.nextInt();
 		if(yesOrNo == 1 )
 			{
